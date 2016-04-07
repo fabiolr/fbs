@@ -1,9 +1,9 @@
 {
-  "name": "Socket-Chat-Example",
-  "description": "my first socket.io app",
-  "website": "https://github.com/guille/chat-example",
-  "repository": "https://github.com/guille/chat-example",
-  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "name": "battleshipServer",
+  "description": "a server for a battleship game",
+  "website": "https://github.com/fabiolr/fbs",
+  "repository": "https://github.com/fabiolr/fbs",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/7/75/Battleship_clipart.svg",
   "success_url": "/",
   "keywords": [
     "node",
