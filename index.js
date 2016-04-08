@@ -27,10 +27,9 @@ io.on('connection', function(socket){
 
   	socket.on('chat message', function(msg){
 
-	  		// do logic here with that msg if needed
+	  	// do logic here with that msg if needed
 
-    
-
+	  	
 
   		// send it to other clients
     io.emit('chat message', msg, socket.username);
@@ -42,7 +41,7 @@ io.on('connection', function(socket){
 
   	socket.on('disconnect', function(){
     	
-    	console.log(username + ' disconnected');
+    	console.log(socket.username + ' disconnected');
     	// remove the username from global usernames list
 		delete usernames[socket.username];
 		// update list of users in chat, client-side
