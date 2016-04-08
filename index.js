@@ -21,7 +21,7 @@ console.log('listening on *:' + http.address().port);
 
 io.on('connection', function(socket){
 
-	console.log(username + ' connected');
+	console.log(socket.username + ' connected');
   	
   	// a message was received from a client
 
@@ -64,7 +64,6 @@ io.on('connection', function(socket){
 		socket.broadcast.emit('msg', 'SERVER', username + ' has connected');
 		// update the list of users in chat, client-side
 		socket.emit('updateusers', usernames);
-		console.log(usernames);
 
 	});
 
