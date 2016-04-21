@@ -40,6 +40,7 @@ io.on('connection', function(socket){
 
 	  			if (/^\/SHOOT\/[a-zA-Z][0-9]$/.test(msg)) {
 
+	  				console.log(socket.shooter + " is the sent a shoot");
 		  			if (socket.shooter == turn) {
 			  			target = msg.substr(7,8);
 						fire(target,socket.shooter);
@@ -183,7 +184,6 @@ function fire(target,shooter,game) {
 		if (gameBoard[shooted][row][col] == 0) {
 			gameBoard[shooted][row][col] = 3;
 			io.emit('chat message', "Missed", "SERVER: ", getTime());
-			switchTurn();
 		// if target has a ship
 		} else if (gameBoard[shooted][row][col] == 1) {
 			gameBoard[shooted][row][col] = 2;
@@ -198,18 +198,22 @@ function fire(target,shooter,game) {
 
 			}
 			console.log(hitCount[shooter]);
-			switchTurn();
 
 			
 		// if water again
 		} else if (gameBoard[shooted][row][col] > 1) {
 			io.emit('chat message', "You just wasted a shot! You had already fired at this location", "SERVER: ", getTime());
 		}
+
+		switchTurn();
+
+
 	}	else {
 			io.emit('chat message', "Invalid Target", "SERVER: ", getTime());
 
 	}
     
+
 }
 
 
@@ -234,14 +238,17 @@ function AddUsertoGame(username) {
 
 function switchTurn() {
 
+	console.log("turn is " + turn);
 	switch (turn) {
-	    case 0:
+	    case 1:
+	        turn = 2;
+	        break;
+	    case 2:
 	        turn = 1;
 	        break;
-	    case 1:
-	        turn = 0;
-	        break;
 	}
+	console.log("turn is " + turn);
+
 }
 
 
